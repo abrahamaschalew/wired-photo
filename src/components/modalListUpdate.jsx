@@ -7,6 +7,7 @@ class ModalListUpdate extends Component {
   render() {
     return (
       <Modal
+        className="Modal"
         {...this.props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
@@ -39,21 +40,27 @@ class LuanchModal extends Component {
     super(props);
   }
 
-  setModalShow = (bool) => {
-    this.setState({ show: bool });
+  setModalShow = (showBool) => {
+    this.setState({ show: showBool });
   };
   render() {
     return (
       <>
         <button
           variant="primary"
-          className="btn btn-primary m-1"
+          className="btn"
           onClick={() => this.setModalShow(true)}
         >
-          Add to list
+          <img
+            src="addToList.svg"
+            className="svg-like-icon"
+            width="15"
+            height="15"
+          ></img>
         </button>
 
         <ModalListUpdate
+          className="modal-style"
           show={this.state.show}
           onHide={() => this.setModalShow(false)}
           functions={this.props.functions}

@@ -1,8 +1,19 @@
 import React, { Component } from "react";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Link,
+  useParams,
+} from "react-router-dom";
 import Photo from "./services/photos";
+import Header from "./components/header";
 import ImageCardComponent from "./components/imageCardComponent";
+import FavouritesPage from "./pages/favouritesPage";
+import ListPage from "./pages/listPage";
+import DisplayGroupList from "./pages/displayGroupList";
 import axios from "axios";
-import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 class App extends Component {
   state = {
@@ -25,7 +36,6 @@ class App extends Component {
     });
 
     this.setState({ images });
-    console.log(this.state.images);
   };
 
   addToFavourites = (url) => {
@@ -48,21 +58,72 @@ class App extends Component {
     this.setState({ images: newState });
   };
 
+  functions = {
+    removeFavourite: this.removeFromFavourites,
+    addToFavourites: this.addToFavourites,
+    addToList: this.addToList,
+    removeFromList: this.removeFromList,
+  };
+
   render() {
     return (
-      <React.Fragment>
-        <ImageCardComponent
-          images={this.state.images}
-          functions={{
-            removeFavourite: this.removeFromFavourites,
-            addToFavourites: this.addToFavourites,
-            addToList: this.addToList,
-            removeFromList: this.removeFromList,
-          }}
-        ></ImageCardComponent>
-      </React.Fragment>
+      <BrowserRouter>
+        <Header></Header>
+        <div className="routes-top-margin">
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <ImageCardComponent
+                  images={this.state.images}
+                  functions={this.functions}
+                ></ImageCardComponent>
+              }
+            />
+            <Route
+              path="/favourites"
+              element={
+                <FavouritesPage
+                  favourites={this.state.images.filter(
+                    (image) => image.isFavourite == true
+                  )}
+                  functions={this.functions}
+                ></FavouritesPage>
+              }
+            />
+
+            <Route
+              path="/lists/"
+              element={
+                <ListPage
+                  lists={this.state.images.filter(
+                    (image) => image.isInList == true
+                  )}
+                  functions={this.functions}
+                ></ListPage>
+              }
+            />
+
+            <Route
+              path="/list/:listName"
+              element={
+                <DisplayGroupList
+                  lists={this.state.images.filter(
+                    (image) => image.isInList == true
+                  )}
+                  functions={this.functions}
+                ></DisplayGroupList>
+              }
+            ></Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
     );
   }
 }
 
+const ReturnParams = () => {
+  return useParams();
+};
 export default App;

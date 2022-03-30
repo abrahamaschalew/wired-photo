@@ -24,14 +24,16 @@ class AddToList extends Component {
         }}
       >
         <div className="container">
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              value={this.state.forms.listName}
-              onChange={this.handleChange}
-              placeholder="Enter List Name"
-            ></input>
+          <div className="col-sm-6">
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.forms.listName}
+                onChange={this.handleChange}
+                placeholder="Enter List Name"
+              ></input>
+            </div>
           </div>
           <div className="form-group mt-2">
             <button

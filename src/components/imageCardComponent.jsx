@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import AddToList from "./addToList";
 import generateKey from "../utils/generateKey";
 import { LuanchModal } from "./modalListUpdate";
+import "../css/imageCard.css";
 
 class ImageCardComponent extends Component {
   state = {};
@@ -13,11 +13,20 @@ class ImageCardComponent extends Component {
     if (image.isInList == true) {
       return (
         <button
+          type="button"
+          className="btn"
           key={generateKey()}
           onClick={() => this.props.functions.removeFromList(image.url)}
-          className="btn btn-danger m-1"
         >
           Remove From List
+          <img
+            style={{ marginLeft: "1rem" }}
+            src="removeFromList.svg"
+            className="svg-like-icon"
+            width="15"
+            height="15"
+            key={generateKey()}
+          ></img>
         </button>
       );
     }
@@ -60,19 +69,50 @@ class ImageCardComponent extends Component {
     );
   }
 
+  splitIntoChunk = (arr, chunk) => {
+    let chunks = [];
+    while (arr.length > 0) {
+      let tempArray;
+      tempArray = arr.splice(0, chunk);
+      chunks.push(tempArray);
+    }
+
+    return chunks;
+  };
+
   render() {
     let resultImages = this.props.images.map((image) => (
-      <div key={generateKey()} className="col-sm-4">
-        <div className="card" key={generateKey()}>
-          <img key={generateKey()} src={image.url} alt="" />
-          {this.favCondition(image)}
-          {this.listCondition(image)}
+      <div key={generateKey()}>
+        <div className="card" key={generateKey()} style={{ margin: "1rem" }}>
+          <img
+            key={generateKey()}
+            src={image.url}
+            alt=""
+            style={{ width: "100%", height: "100%" }}
+            className="image-card"
+          />
+          <div className="svg-container" key={generateKey()}>
+            <div key={generateKey()}>{this.listCondition(image)}</div>
+            <div key={generateKey()} style={{ marginLeft: "auto" }}>
+              {this.favCondition(image)}
+            </div>
+          </div>
         </div>
       </div>
     ));
+
+    let threeColumnChunkImages = this.splitIntoChunk(
+      resultImages,
+      Math.round(resultImages.length / 3)
+    );
+
+    let output = threeColumnChunkImages.map((element) => (
+      <div className="col-sm-4">{element}</div>
+    ));
+
     return (
-      <div className="container">
-        <div className="row">{resultImages}</div>
+      <div className="container-fluid" key={generateKey()}>
+        <div className="row">{output}</div>
       </div>
     );
   }

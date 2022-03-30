@@ -1,0 +1,80 @@
+nav {
+  padding: auto 10%;
+  z-index: 2;
+}
+
+nav ul {
+  float: right;
+  display: flex;
+  margin: 1rem 0;
+}
+
+nav ul li {
+  margin: 0 2rem;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.navbar {
+  background-color: #fff !important;
+}
+
+.navbar-brand-name {
+  color: #000;
+  font-size: 1.5rem;
+  margin-left: 30%;
+}
+
+.navbar-brand-name:hover {
+  color: #000;
+}
+
+.btn-my {
+  width: 10rem;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+  text-decoration: none;
+  padding: 0.4rem 1.3rem;
+}
+
+.btn-my:hover {
+  opacity: 0.9;
+}
+
+.fav {
+  background: #6bc118;
+  color: #fff;
+  border-radius: 0.5rem;
+}
+
+.fav a {
+  color: #fff;
+}
+
+.list {
+  background: #fff;
+  border: 2px solid #6bc118;
+  border-radius: 0.5rem;
+}
+
+.list {
+  color: #6bc118;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  nav ul {
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    margin: 0 1rem;
+  }
+}

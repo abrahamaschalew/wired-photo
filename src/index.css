@@ -1,10 +1,15 @@
 body {
   margin: 0;
+  background: #f0fff0 !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.routes-top-margin {
+  margin-top: 8rem;
 }
 
 code {
@@ -32,10 +37,38 @@ li > p {
   margin: 0.5rem 0;
 }
 
-.svg-like-icon {
+.svg-container {
   margin: 1rem;
-  float: right;
-  transition: transform 2s;
-  transform: scale(1.3);
-  transform: scale(1);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.svg-like-icon {
+  transition: width 2s, height 2s, transform 1s;
+}
+
+.svg-like-icon:active {
+  transform: scale(0.5);
+}
+
+.modal-style {
+  margin: auto;
+}
+
+.Modal {
+  width: 35%;
+}
+
+.h3-error {
+  color: #df4759;
+  text-align: center;
+  margin: 2rem 0;
+  width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .h3-error {
+    width: 100%;
+  }
 }
