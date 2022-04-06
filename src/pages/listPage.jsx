@@ -26,7 +26,7 @@ class ListPage extends Component {
         </h1>
         <ul>
           {lists.map((list) => (
-            <Link to="/">
+            <Link to={"/list/" + list}>
               <li style={{ margin: "1rem 0" }} key={generateKey()}>
                 <div className="list-group-item">
                   <h2>{list}</h2>

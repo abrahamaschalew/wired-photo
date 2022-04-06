@@ -10,7 +10,7 @@ export default class Photo {
   // add to favourites
   static addToFavourites(url, photos) {
     photos.map((element, index) => {
-      if (element.url == url) {
+      if (element.url === url) {
         photos[index].isFavourite = true;
       }
     });
@@ -21,7 +21,7 @@ export default class Photo {
   // Remove from favourites
   static removeFavourite(url, photos) {
     photos.map((element, index) => {
-      if (element.url == url) {
+      if (element.url === url) {
         photos[index].isFavourite = false;
       }
     });
@@ -31,7 +31,7 @@ export default class Photo {
   // add the selected photo to list
   static addToList(url, listName, photos) {
     photos.map((element, index) => {
-      if (element.url == url) {
+      if (element.url === url) {
         photos[index].isInList = true;
         photos[index].listName = listName;
       }
@@ -42,7 +42,7 @@ export default class Photo {
   // add the selected photo to list
   static removeFromList(url, photos) {
     photos.map((element, index) => {
-      if (element.url == url) {
+      if (element.url === url) {
         photos[index].isInList = false;
         photos[index].listName = null;
       }

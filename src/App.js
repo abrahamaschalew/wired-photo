@@ -6,14 +6,19 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
+
+// Components
 import Photo from "./services/photos";
 import Header from "./components/header";
 import ImageCardComponent from "./components/imageCardComponent";
 import FavouritesPage from "./pages/favouritesPage";
 import ListPage from "./pages/listPage";
 import DisplayGroupList from "./pages/displayGroupList";
+
+// Librarys
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
+require("dotenv").config();
 
 class App extends Component {
   state = {
@@ -28,11 +33,15 @@ class App extends Component {
   }
 
   fetchFileNames = async () => {
-    const response = await axios.get("http://localhost:4000/files");
+    const response = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/files`
+    );
 
     let images = [];
     response.data.files.forEach((imageUrl) => {
-      images.push(new Photo(`http://localhost:4000/${imageUrl}`).image);
+      images.push(
+        new Photo(`${process.env.REACT_APP_SERVER_URL}/${imageUrl}`).image
+      );
     });
 
     this.setState({ images });

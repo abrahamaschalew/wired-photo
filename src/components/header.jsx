@@ -10,6 +10,12 @@ class Header extends Component {
           <Link className="navbar-brand-name" to="/">
             Wired Photo
           </Link>
+          <a
+            href="https://github.com/abrahamaschalew/wired-photo"
+            style={{ margin: "auto  2rem" }}
+          >
+            <img src="github.svg"></img>
+          </a>
         </span>
         <div className="form-inline my-2 my-lg-0">
           <ul>

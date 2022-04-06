@@ -1,23 +1,16 @@
 import React, { Component } from "react";
-import { useSearchParams } from "react-router-dom";
-import { withRouter } from "react-router";
+import { useParams } from "react-router-dom";
+import ImageCardComponent from "../components/imageCardComponent";
 
-class DisplayGroupList extends Component {
-  state = {};
-  componentDidMount() {
-    //console.log(GetP());
-  }
-  render() {
-    // let { listName } = useParams();
-    // console.log(listName);
-    return <h1>Displaying</h1>;
-  }
+export default function DisplayGroupList(props) {
+  const lists = props.lists;
+  const functions = props.functions;
+  let { listName } = useParams();
+
+  return (
+    <ImageCardComponent
+      images={lists.filter((image) => image.lsitName != listName)}
+      functions={functions}
+    ></ImageCardComponent>
+  );
 }
-
-// function GetP() {
-//   let [searchParams, setSearchParams] = useSearchParams();
-//   let listName = searchParams.get("lsitName");
-//   return listName;
-// }
-
-export default DisplayGroupList;
