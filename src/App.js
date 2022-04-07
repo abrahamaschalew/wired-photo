@@ -18,7 +18,11 @@ import DisplayGroupList from "./pages/displayGroupList";
 // Librarys
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
-require("dotenv").config();
+
+// Configuring ENV variables
+if (process.env.NODE_ENV === "production")
+  require("dotenv").config({ path: ".env.production" });
+else require("dotenv").config({ path: ".env" });
 
 class App extends Component {
   state = {

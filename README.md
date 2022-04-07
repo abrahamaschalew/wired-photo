@@ -1,6 +1,24 @@
 # Getting Started with Wired Photo
 
+[Demo](https://wired-photo.web.app)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Wired Photo a react application that get images from the server and display. And let you to like photos and group them in list.
+
+## Config
+
+#### .env file
+
+You need to let react know where to get the images from. You can find server application [here](https://github.com/abrahamaschalew/wired-photo-backend).
+
+There are two .env files.
+
+.env file is for development puropose. And .env.production is for production mode. If you build the project using `npm run build` react automatically use .env.production
+
+```text
+REACT_APP_SERVER_URL=http://localhost:4000
+```
 
 ## Available Scripts
 
@@ -20,5 +38,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
